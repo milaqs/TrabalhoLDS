@@ -26,20 +26,20 @@ class AdmDisciplinaController extends Controller
         $req->validations($rules, $messages);
     }
 
-    public function formularioAdicionar()
+    public function addForm()
     {
         $caminho = route('adm.adicionaDisciplina');
         return view('adm.disciplinas.formulario', compact('caminho'));
     }
 
-    public function formularioAtualizar($id)
+    public function updateForm($id)
     {
         $disciplinas = Disciplina::find($id);
         $caminho = route('adm.atualizaDisciplina', $id);
         return view('adm.disciplinas.formulario', compact('caminho', 'disciplinas'));
     }
 
-    public function adicionar(Request $req)
+    public function insert(Request $req)
     {
         $this->validations($req);
 
@@ -49,7 +49,7 @@ class AdmDisciplinaController extends Controller
         return redirect()->route('adm.listaDisciplina');
     }
 
-    public function atualizar(Request $req, $id)
+    public function update(Request $req, $id)
     {
         $this->validations($req);
 
@@ -59,13 +59,13 @@ class AdmDisciplinaController extends Controller
         return redirect()->route('adm.listaDisciplina');
     }
 
-    public function listar()
+    public function selectAll()
     {
         $registros = Disciplina::all();
         return view('adm.disciplinas.listar', compact('registros'));
     }
 
-    public function deletar($id)
+    public function delete($id)
     {
         Disciplina::find($id)->delete();
         return redirect()->route('adm.listaDisciplina');

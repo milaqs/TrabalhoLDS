@@ -22,20 +22,20 @@ class AdmEspacoController extends Controller
         $req->validations($rules, $messages);
     }
 
-    public function formularioAdicionar()
+    public function addForm()
     {
         $caminho = route('adm.adicionaEspaco');
         return view('adm.espacos.formulario', compact('caminho'));
     }
 
-    public function formularioAtualizar($id)
+    public function updateForm($id)
     {
         $espacos = Espaco::find($id);
         $caminho = route('adm.atualizaEspaco', $id);
         return view('adm.espacos.formulario', compact('caminho', 'espacos'));
     }
 
-    public function adicionar(Request $req)
+    public function insert(Request $req)
     {
         $this->validations($req);
 
@@ -45,7 +45,7 @@ class AdmEspacoController extends Controller
         return redirect()->route('adm.listaEspaco');
     }
 
-    public function atualizar(Request $req, $id)
+    public function update(Request $req, $id)
     {
         $this->validations($req);
 
@@ -55,13 +55,13 @@ class AdmEspacoController extends Controller
         return redirect()->route('adm.listaEspaco');
     }
 
-    public function listar()
+    public function selectAll()
     {
         $registros = Espaco::all();
         return view('adm.espacos.listar', compact('registros'));
     }
 
-    public function deletar($id)
+    public function delete($id)
     {
         Espaco::find($id)->delete();
         return redirect()->route('adm.listaEspaco');

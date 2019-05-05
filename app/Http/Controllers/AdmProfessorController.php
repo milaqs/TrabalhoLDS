@@ -29,20 +29,20 @@ class AdmProfessorController extends Controller
         $req->validations($rules, $messages);
     }
 
-    public function formularioAdicionar()
+    public function addForm()
     {
         $caminho = route('adm.adicionaProfessor');
         return view('adm.professores.formulario', compact('caminho'));
     }
 
-    public function formularioAtualizar($id)
+    public function updateForm($id)
     {
         $professores = Professor::find($id);
         $caminho = route('adm.atualizaProfessor', $id);
         return view('adm.professores.formulario', compact('caminho', 'professores'));
     }
 
-    public function adicionar(Request $req) {
+    public function insert(Request $req) {
         
         $this->validations($req);
 
@@ -52,7 +52,7 @@ class AdmProfessorController extends Controller
         return redirect()->route('adm.listaProfessor');
     }
 
-    public function atualizar(Request $req, $id)
+    public function update(Request $req, $id)
     {
         $this->validations($req);
 
@@ -62,13 +62,13 @@ class AdmProfessorController extends Controller
         return redirect()->route('adm.listaProfessor');
     }
 
-    public function listar()
+    public function selectAll()
     {
         $registros = Professor::all();
         return view('adm.professores.listar', compact('registros'));
     }
 
-    public function deletar($id)
+    public function delete($id)
     {
         Professor::find($id)->delete();
         return redirect()->route('adm.listaProfessor');

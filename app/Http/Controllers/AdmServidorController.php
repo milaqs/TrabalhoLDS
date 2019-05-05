@@ -28,20 +28,20 @@ class AdmServidorController extends Controller
         $req->validations($rules, $messages);
     }
 
-    public function formularioAdicionar()
+    public function addForm()
     {
         $caminho = route('adm.adicionaServidor');
         return view('adm.servidores.formulario', compact('caminho'));
     }
 
-    public function formularioAtualizar($id)
+    public function updateForm($id)
     {
         $servidores = Servidor::find($id);
         $caminho = route('adm.atualizaServidor', $id);
         return view('adm.servidores.formulario', compact('caminho', 'servidores'));
     }
 
-    public function adicionar(Request $req)
+    public function insert(Request $req)
     {
         $this->validations($req);
 
@@ -51,7 +51,7 @@ class AdmServidorController extends Controller
         return redirect()->route('adm.listaServidor');
     }
 
-    public function atualizar(Request $req, $id)
+    public function update(Request $req, $id)
     {
         $this->validations($req);
 
@@ -61,13 +61,13 @@ class AdmServidorController extends Controller
         return redirect()->route('adm.listaServidor');
     }
 
-    public function listar()
+    public function selectAll()
     {
         $registros = Servidor::all();
         return view('adm.servidores.listar', compact('registros'));
     }
 
-    public function deletar($id)
+    public function delete($id)
     {
         Servidor::find($id)->delete();
         return redirect()->route('adm.listaServidor');
