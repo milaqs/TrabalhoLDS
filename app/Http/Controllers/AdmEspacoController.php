@@ -11,15 +11,18 @@ class AdmEspacoController extends Controller
     {
         $rules = [
             "nome_espaco" => "required|min:3|max:50",
-            "capacidade_espaco" => "required",
+            "capacidade_espaco" => "required|min:1",
             "descricao_espaco" => "required",
         ];
 
         $messages = [
             "required" => "Campo obrigatório",
+            'capacidade_espaco' => "É obrigário ter no minimo 1",
+            "nome_espaco.min" => "O minimo de caracteres é 1.",
+            "nome_espaco.max" => "O máximo de caracteres é 50."
         ];
 
-        $req->validations($rules, $messages);
+        $req->validate($rules, $messages);
     }
 
     public function addForm()

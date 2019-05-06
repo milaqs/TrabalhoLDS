@@ -40,3 +40,7 @@ Route::post('/adm/disciplinas/adicionar',               ['as' => 'adm.adicionaDi
 Route::post('/adm/disciplinas/atualizar/{id}',          ['as' => 'adm.atualizaDisciplina', 'uses'   => 'AdmDisciplinaController@update']);
 Route::get('/adm/disciplinas/listar',                   ['as' => 'adm.listaDisciplina', 'uses'      => 'AdmDisciplinaController@selectAll']);
 Route::get('/adm/disciplinas/deletar/{id}',             ['as' => 'adm.deletaDisciplina', 'uses'     => 'AdmDisciplinaController@delete']);
+
+//Login Servidores
+Route::get('/adm/servidores/login',                     ['as' => 'adm.formLogin', 'uses'    => 'AdmServidorController@login']);
+Route::post('/adm/servidores/signUp',                  ['as' => 'adm.verificarLogin', 'uses'   => 'AdmServidorController@signUp']);

@@ -10,9 +10,9 @@ class AdmProfessorController extends Controller
     public function validations(Request $req)
     {
         $rules = [
-            "prontuario_professor" => "required|min:2|max:20|unique:professor, prontuario_professor",
+            "prontuario_professor" => "required|min:2|max:20|unique:professors",
             "nome_professor" => "required|min:3|max:200",
-            "email_professor" => "required|email|unique:professor, email_professor",
+            "email_professor" => "required|email|unique:professors",
         ];
 
         $messages = [
@@ -26,7 +26,7 @@ class AdmProfessorController extends Controller
             "email_professor.unique" => "Email em uso.",
         ];
 
-        $req->validations($rules, $messages);
+        $req->validate($rules, $messages);
     }
 
     public function addForm()

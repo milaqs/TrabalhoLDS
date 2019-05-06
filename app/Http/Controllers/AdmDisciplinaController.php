@@ -23,7 +23,7 @@ class AdmDisciplinaController extends Controller
             "curso_disciplina.max" => "O máximo de caracteres é 50."
         ];
 
-        $req->validations($rules, $messages);
+        $req->validate($rules, $messages);
     }
 
     public function addForm()

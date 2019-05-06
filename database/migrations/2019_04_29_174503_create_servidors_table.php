@@ -15,9 +15,10 @@ class CreateServidorsTable extends Migration
     {
         Schema::create('servidors', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('prontuario_servidor');
-            $table->string('nome_servidor');
-            $table->string('email_servidor');
+            $table->string('prontuario_servidor', 20);
+            $table->string('nome_servidor', 200);
+            $table->string('email_servidor', 50);
+            $table->string("senha_servidor", 20);
             $table->timestamps();
         });
     }
