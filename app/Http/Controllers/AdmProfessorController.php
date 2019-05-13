@@ -7,6 +7,15 @@ use App\Professor;
 
 class AdmProfessorController extends Controller
 {
+    public function checkLoggedIn() {
+        if (!AdmServidorController::isLogged()) {
+            var_dump("oi");
+            die;
+            $caminho = route('adm.verificarLogin');
+            return view('adm.servidores.login', compact('caminho'));
+        }
+    }
+
     public function validations(Request $req)
     {
         $rules = [
@@ -31,12 +40,16 @@ class AdmProfessorController extends Controller
 
     public function addForm()
     {
+        $this->checkLoggedIn();
+
         $caminho = route('adm.adicionaProfessor');
         return view('adm.professores.formulario', compact('caminho'));
     }
 
     public function updateForm($id)
     {
+        $this->checkLoggedIn();
+
         $professores = Professor::find($id);
         $caminho = route('adm.atualizaProfessor', $id);
         return view('adm.professores.formulario', compact('caminho', 'professores'));
@@ -64,12 +77,16 @@ class AdmProfessorController extends Controller
 
     public function selectAll()
     {
+        $this->checkLoggedIn();
+
         $registros = Professor::all();
         return view('adm.professores.listar', compact('registros'));
     }
 
     public function delete($id)
     {
+        $this->checkLoggedIn();
+
         Professor::find($id)->delete();
         return redirect()->route('adm.listaProfessor');
     }

@@ -32,6 +32,7 @@ Route::post('/adm/servidores/adicionar',                ['as' => 'adm.adicionaSe
 Route::post('/adm/servidores/atualizar/{id}',           ['as' => 'adm.atualizaServidor', 'uses'  => 'AdmServidorController@update']);
 Route::get('/adm/servidores/listar',                    ['as' => 'adm.listaServidor', 'uses'     => 'AdmServidorController@selectAll']);
 Route::get('/adm/servidores/deletar/{id}',              ['as' => 'adm.deletaServidor', 'uses'    => 'AdmServidorController@delete']);
+Route::get('/adm/servidores/index',                   ['as' => 'adm.index', 'uses'               => 'AdmServidorController@index']);
 
 //Disciplina
 Route::get('/adm/disciplinas/formularioAdicionar',      ['as' => 'adm.formAddDisciplina', 'uses'    => 'AdmDisciplinaController@addForm']);
