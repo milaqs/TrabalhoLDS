@@ -100,7 +100,7 @@ class AdmServidorController extends Controller
         return redirect()->route('adm.listaServidor');
     }
 
-    public function isLogged()
+    public static function isLogged()
     {
         $servidor = session('servidor');
         if (!isset($servidor)) {
@@ -143,8 +143,18 @@ class AdmServidorController extends Controller
                 ]);
         }
 
-      //  $req->session()->put('servidor', $servidor->prontuario_servidor);
+      $req->session()->put('servidor', $servidor->prontuario_servidor);
 
       return redirect()->route('adm.listaServidor');
+    }
+
+    public function index()
+    {
+        if (!$this->isLogged()) {
+            $caminho = route('adm.verificarLogin');
+            return view('adm.servidores.login', compact('caminho'));
+        }
+
+        return view('adm.servidores.index');
     }
 }

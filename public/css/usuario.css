@@ -9,33 +9,33 @@
     line-height: 1;
     position: relative;
     cursor: default;
-  }
-  .fundo {
+}
+.fundo {
     background-image: url(https://suap.ifsp.edu.br/static/comum/img/login-background.jpg);
-  }
-  .panel {
-      border: 1px solid #d9d9d9;
-      border-radius: 5px;
-      margin-bottom: 1.25rem;
-      padding: 10px;
-      background: #eee;
-      margin-left: 25%;
-      margin-right: 25%;
-      margin-top: 1%;
-      padding-left: 15px;
-      padding-right: 40px;
-  }
-  .panel .panel-body {
+}
+.panel {
+    border: 1px solid #d9d9d9;
+    border-radius: 5px;
+    margin-bottom: 1.25rem;
+    padding: 10px;
+    background: #eee;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 1%;
+    padding-left: 15px;
+    padding-right: 40px;
+}
+.panel .panel-body {
     font-family: sans-serif;
     font-size: 18px;
   
-  }
-  .text-center {
+}
+.text-center {
     text-align: center;
     font-size: 20px;
     letter-spacing: 1px;
-  }
-  .form-control {
+}
+.form-control {
     border-radius: 5px;
     background-color: white;
     font-family: inherit;
@@ -49,17 +49,17 @@
     padding: 10px;
     height: 30px;
     width: 100%
-  }
-  .form-control:active, .form-control:focus {
+}
+.form-control:active, .form-control:focus {
     border: 2px solid #5cb85c;
     outline: #5cb85c;
-  }
-  .title {
+}
+.title {
     font-size: 17px;
     margin-bottom: 3px;
     color: #363636;
-  }
-  .btn {
+}
+.btn {
     cursor: pointer;
     font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
     font-weight: normal;
@@ -81,8 +81,23 @@
     margin-left: 36%;
     width: 30%;
     letter-spacing: 1px;
-  }
-  ::-webkit-input-placeholder {
+}
+::-webkit-input-placeholder {
     font-style: italic;
     font-size: 13px;
-  }
+}
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #333333;
+    color: white;
+    text-align: center;
+    height: 10%;
+    z-index: 10;
+}
+#footer-text {
+    color: #ccc;
+    padding-top: 30px;
+}

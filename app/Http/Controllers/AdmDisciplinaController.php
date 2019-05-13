@@ -7,6 +7,15 @@ use App\Disciplina;
 
 class AdmDisciplinaController extends Controller
 {
+    public function checkLoggedIn() {
+        if (!AdmServidorController::isLogged()) {
+            var_dump("oi");
+            die;
+            $caminho = route('adm.verificarLogin');
+            return view('adm.servidores.login', compact('caminho'));
+        }
+    }
+
     public function validations(Request $req)
     {
         $rules = [
@@ -28,12 +37,16 @@ class AdmDisciplinaController extends Controller
 
     public function addForm()
     {
+        $this->checkLoggedIn();
+
         $caminho = route('adm.adicionaDisciplina');
         return view('adm.disciplinas.formulario', compact('caminho'));
     }
 
     public function updateForm($id)
     {
+        $this->checkLoggedIn();
+
         $disciplinas = Disciplina::find($id);
         $caminho = route('adm.atualizaDisciplina', $id);
         return view('adm.disciplinas.formulario', compact('caminho', 'disciplinas'));
@@ -61,12 +74,16 @@ class AdmDisciplinaController extends Controller
 
     public function selectAll()
     {
+        $this->checkLoggedIn();
+
         $registros = Disciplina::all();
         return view('adm.disciplinas.listar', compact('registros'));
     }
 
     public function delete($id)
     {
+        $this->checkLoggedIn();
+
         Disciplina::find($id)->delete();
         return redirect()->route('adm.listaDisciplina');
     }

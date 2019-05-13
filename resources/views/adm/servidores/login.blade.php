@@ -39,7 +39,7 @@
                                 @endif
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-block btn-primary mt-lg btn-lg">Cadastrar</button>
+                        <button type="submit" class="btn btn-block btn-primary mt-lg btn-lg">Confirmar</button>
                     </form>
                 </div>
             </div>
