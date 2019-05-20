@@ -9,8 +9,8 @@ class AdmProfessorController extends Controller
 {
     public function checkLoggedIn() {
         if (!AdmServidorController::isLogged()) {
-            var_dump("oi");
-            die;
+            // var_dump("oi");
+            // die;
             $caminho = route('adm.verificarLogin');
             return view('adm.servidores.login', compact('caminho'));
         }

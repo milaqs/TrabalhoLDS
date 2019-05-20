@@ -25,7 +25,7 @@ body {
 
 .tabela table td,
 .tabela table th {
-    border: 1px solid #ddd;
+    /* border: 1px solid #ddd; */
 }
 
 .footer {

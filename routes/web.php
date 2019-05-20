@@ -17,6 +17,7 @@ Route::post('/adm/espacos/atualizar/{id}',              ['as' => 'adm.atualizaEs
 Route::get('/adm/espacos/listar',                       ['as' => 'adm.listaEspaco', 'uses'      => 'AdmEspacoController@selectAll']);
 Route::get('/adm/espacos/deletar/{id}',                 ['as' => 'adm.deletaEspaco', 'uses'     => 'AdmEspacoController@delete']);
 
+
 //Professores
 Route::get('/adm/professores/formularioAdicionar',      ['as' => 'adm.formAddProfessor', 'uses'     => 'AdmProfessorController@addForm']);
 Route::get('/adm/professores/formularioAtualizar/{id}', ['as' => 'adm.formAttProfessor', 'uses'     => 'AdmProfessorController@updateForm']);
@@ -24,6 +25,11 @@ Route::post('/adm/professores/adicionar',               ['as' => 'adm.adicionaPr
 Route::post('/adm/professores/atualizar/{id}',          ['as' => 'adm.atualizaProfessor', 'uses'    => 'AdmProfessorController@update']);
 Route::get('/adm/professores/listar',                   ['as' => 'adm.listaProfessor', 'uses'       => 'AdmProfessorController@selectAll']);
 Route::get('/adm/professores/deletar/{id}',             ['as' => 'adm.deletaProfessor', 'uses'      => 'AdmProfessorController@delete']);
+//reserva de sala
+// Route::post('/adm/espacos/solicitaSala',                   ['as' => 'adm.solicitaSala', 'uses'   => 'AdmProfessorController@solicitaformulario']);
+// Route::get('/adm/professores/index',                   ['as' => 'adm.index', 'uses'               => 'AdmProfessorController@index']);
+// Route::get('/adm/professores/listaraprovacoes',                   ['as' => 'adm.aprovacoes', 'uses'               => 'AdmProfessorController@aprovacoes']);
+
 
 //Servidores
 Route::get('/adm/servidores/formularioAdicionar',       ['as' => 'adm.formAddServidor', 'uses'   => 'AdmServidorController@addForm']);
@@ -33,6 +39,10 @@ Route::post('/adm/servidores/atualizar/{id}',           ['as' => 'adm.atualizaSe
 Route::get('/adm/servidores/listar',                    ['as' => 'adm.listaServidor', 'uses'     => 'AdmServidorController@selectAll']);
 Route::get('/adm/servidores/deletar/{id}',              ['as' => 'adm.deletaServidor', 'uses'    => 'AdmServidorController@delete']);
 Route::get('/adm/servidores/index',                   ['as' => 'adm.index', 'uses'               => 'AdmServidorController@index']);
+//reserva de sala
+// Route::get('/adm/servidores/',                   ['as' => 'adm.aprovacoes', 'uses'               => 'AdmProfessorController@aprovacoes']);
+// Route::get('/adm/servidores/',                   ['as' => 'adm.historicoaprovacoes', 'uses'               => 'AdmProfessorController@historicoaprovacoes']);
+
 
 //Disciplina
 Route::get('/adm/disciplinas/formularioAdicionar',      ['as' => 'adm.formAddDisciplina', 'uses'    => 'AdmDisciplinaController@addForm']);

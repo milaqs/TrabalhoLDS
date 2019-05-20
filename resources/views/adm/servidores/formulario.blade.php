@@ -9,7 +9,7 @@
         <div>
             <div class="panel panel-dark panel-flat">
                 <div class="panel-body">
-                    <p class="text-center pv">Servidor</p>
+                    <p class="text-center pv">Cadastro de Servidor</p>
                     <form method="POST" action="{{ $caminho }}">
                         {{ csrf_field() }}
                         <div class="form-group has-feedback">

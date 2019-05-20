@@ -14,7 +14,7 @@
                             {{ csrf_field() }}
                             <div class="form-group has-feedback">
                                 <p class="title"> Nome do espaço:</p>
-                                <input id="nome" name="nome_espaco" autofocus type="text" placeholder="Nome do local" required
+                                <input id="nome" name="nome_espaco" autofocus type="text" placeholder="Nome da sala" required
                                     value="{{ isset($espacos->nome_espaco)  ? $espacos->nome_espaco  : '' }}"
                                 class="form-control {{ $errors->has('nome_espaco') ? 'is-invalid' : '' }}">
                                 @if($errors->has('nome_espaco'))
