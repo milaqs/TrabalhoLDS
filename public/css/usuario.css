@@ -10,6 +10,58 @@
     position: relative;
     cursor: default;
 }
+
+.panel-calendar {
+    padding: 10px;
+    margin-left: 10%;
+    margin-right: 5%;
+    margin-top: 1%;
+    padding-left: 15px;
+    padding-right: 40px;
+}
+.calendar-content {
+    border: 1px solid #d9d9d9;
+    border-radius: 5px;
+    padding: 15px;
+    background: #eee;
+}
+.calendar-options {
+    margin-bottom: 20px;
+}
+.calendar-options span {
+    font-weight: 800;
+    margin-right: 10px;
+}
+.calendar-options .custom-select {
+    width: 70%;
+}
+.panel-calendar .table-calendar {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+.panel-calendar .table-calendar th {
+    padding: .75rem;
+    border-left: 1px solid #fff;
+    text-align: center;
+}
+.panel-calendar .table-calendar td {
+    padding: .75rem;
+    border-left: 1px solid #fff;
+    font-weight: 600;
+    text-align: center;
+}
+.panel-calendar .table-calendar th:first-child,
+.panel-calendar .table-calendar td:first-child {
+    border-left: none !important;
+}
+.panel-calendar table thead {
+    background-color: #32cd32;
+    color: #fff;
+}
+.panel-calendar table tbody {
+    background-color: #d9d9d9;
+}
+
 .fundo {
     background-image: url(https://suap.ifsp.edu.br/static/comum/img/login-background.jpg);
 }
@@ -87,7 +139,6 @@
     font-size: 13px;
 }
 .footer {
-    position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
@@ -100,4 +151,9 @@
 #footer-text {
     color: #ccc;
     padding-top: 30px;
+}
+@media (max-height: 650px) {
+    .footer {
+        position: fixed;
+    }
 }

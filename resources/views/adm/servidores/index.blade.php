@@ -68,6 +68,37 @@
                         </form>
                     </div>
                 </div>
+
+                <div class="card mb-4">
+                    <div class="view overlay">
+                        <img class="card-img-top" src="" alt="Card image cap">
+                        <a href="#!">
+                            <div class="mask rgba-white-slight"></div>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Listagem de salas solicitadas</h4>
+                        <p class="card-text">Verifique histórico das salas usadas</p>
+                        <!-- <form method="get" action=""> -->
+                            <button type="submit" class="btn btn-light-blue btn-md">Acessar</button>
+                        <!-- </form> -->
+                    </div>
+                </div>
+
+                 <div class="card mb-4">
+                    <div class="view overlay">
+                        <img class="card-img-top" src="" alt="Card image cap">
+                        <a href="#!">
+                            <div class="mask rgba-white-slight"></div>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Aprovar pedidos de salas</h4>
+                        <!-- <form method="get" action=""> -->
+                            <button type="submit" class="btn btn-light-blue btn-md">Acessar</button>
+                        <!-- </form> -->
+                    </div>
+                </div>
             </div>
         </div>
 @endsection

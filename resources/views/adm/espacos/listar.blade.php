@@ -20,7 +20,6 @@
                         </form>
                     </div>
                 </div>
-                
                 <table class="table">
                     <thead>
                         <tr>

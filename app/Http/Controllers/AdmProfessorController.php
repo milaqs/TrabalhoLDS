@@ -3,91 +3,97 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Professor;
+use App\User;
+use Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AdmProfessorController extends Controller
 {
-    public function checkLoggedIn() {
-        if (!AdmServidorController::isLogged()) {
-            var_dump("oi");
-            die;
-            $caminho = route('adm.verificarLogin');
-            return view('adm.servidores.login', compact('caminho'));
-        }
-    }
+    
 
-    public function validations(Request $req)
-    {
+    public function validations(Request $req) {
         $rules = [
-            "prontuario_professor" => "required|min:2|max:20|unique:professors",
-            "nome_professor" => "required|min:3|max:200",
-            "email_professor" => "required|email|unique:professors",
+            "nome" => "required|min:3|max:200",
+            "email" => "required|email|unique:users",
+            "prontuario" => "required|min:3|max:30",
+            "password" => "required|min:3|max:100",
         ];
 
         $messages = [
-            "required" => "Campo obrigatório",
-            "prontuario_professor.unique" => "Prontuário em uso.",
-            "nome_professor.min" => "O minimo de caracteres é 3.",
-            "nome_professor.max" => "O máximo de caracteres é 200.",
-            "prontuario_professor.min" => "O minimo de caracteres é 3.",
-            "prontuario_professor.max" => "O máximo de caracteres é 20.",
-            "email_professor.email" => "Email inválido.",
-            "email_professor.unique" => "Email em uso.",
+            "required" => "Este campo é obrigatório",
+            "email.email" => "Email inválido",
+            "email.unique" => "Email em uso",
+            "nome.min" => "Minimo de caracteres é 3",
+            "nome.max" => "Maxmo de caracteres é 200",
+            "prontuario.min" => "Minimo de caracteres é 3",
+            "prontuario.min" => "Maximo de caracteres permitidos é 30",
+            "password.min" => "Minimo de caracteres é 3",
+            "password.min" => "Maximo de caracteres permitidos é 100"
         ];
 
         $req->validate($rules, $messages);
     }
 
+    public function index() {
+        return view ('adm.professores.index');
+    }
+
     public function addForm()
     {
-        $this->checkLoggedIn();
-
         $caminho = route('adm.adicionaProfessor');
         return view('adm.professores.formulario', compact('caminho'));
     }
 
     public function updateForm($id)
     {
-        $this->checkLoggedIn();
-
-        $professores = Professor::find($id);
+        $professores = User::find($id);
         $caminho = route('adm.atualizaProfessor', $id);
         return view('adm.professores.formulario', compact('caminho', 'professores'));
     }
 
     public function insert(Request $req) {
-        
         $this->validations($req);
-
         $dados = $req->all();
-        Professor::create($dados);
-
+        $this->createUser($dados);
         return redirect()->route('adm.listaProfessor');
+    }
+
+    private function createUser($data) {
+        return User::create([
+            'nome' => $data['nome'],
+            'email' => $data['email'],
+            'prontuario' => $data['prontuario'],
+            'tipo' => $data['tipo'],
+            'password' => Hash::make($data['password']),
+        ]);
     }
 
     public function update(Request $req, $id)
-    {
+    {   
         $this->validations($req);
-
         $dados = $req->all();
-        Professor::find($id)->update($dados);
-
+        User::find($id)->update($dados);
         return redirect()->route('adm.listaProfessor');
     }
 
+    // private function isHashed($string) {
+    //     $hash = Hash::make($string);
+    //     if (Hash::check($string, $hash)) {
+    //         return true;
+    //     }
+    //     return false;
+    // }
+
+
     public function selectAll()
     {
-        $this->checkLoggedIn();
-
-        $registros = Professor::all();
+        $registros = User::all()->where('tipo', 'professor');
         return view('adm.professores.listar', compact('registros'));
     }
 
     public function delete($id)
     {
-        $this->checkLoggedIn();
-
-        Professor::find($id)->delete();
+        User::find($id)->delete();
         return redirect()->route('adm.listaProfessor');
     }
 }

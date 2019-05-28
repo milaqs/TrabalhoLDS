@@ -35,10 +35,10 @@
                     <tr scope="row">
                         <td>{{ $registro->id }}</td>
                         <td>{{ $registro->nome_disciplina }}</td>
-                        <td>{{ $registro->curso_disciplina }}</td>
-                        <td>{{ $registro->carga_horaria }}</td>
-                        <td><a class="btn deep-orange" href="{{route('adm.formAttDisciplina', $registro->id)}}">Editar</a></td>
-                        <td><a class="btn red" href="{{route('adm.deletaDisciplina', $registro->id)}}">Deletar</a></td>
+                        <td>{{ $registro->nome_curso }}</td>
+                        <td>{{ $registro->carga_horaria}} </td>
+                        <td><a class="btn btn-warning" href="{{route('adm.formAttDisciplina', $registro->id)}}">Editar</a></td>
+                        <td><a class="btn btn-danger" href="{{route('adm.deletaDisciplina', $registro->id)}}">Deletar</a></td>
                     </tr>
                     @endforeach
                 </table>
