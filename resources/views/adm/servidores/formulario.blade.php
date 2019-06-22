@@ -26,7 +26,8 @@
                         </div>
                         <div class="form-group has-feedback">
                             <p class="title"> E-mail acadêmico:</p>
-                            <input id="email" name="email" type="email" placeholder="usuario@ifsp.edu.br" required
+                            <input id="email" name="email" type="email" placeholder="usuario@ifsp.edu.br" 
+                            {{isset($servidores->prontuario) ? 'disabled' : '' }} required
                                 value="{{ isset($servidores->email)  ? $servidores->email  : '' }}"
                                 class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}">
                                 @if($errors->has('email'))
@@ -37,7 +38,8 @@
                         </div>
                         <div class="form-group has-feedback">
                             <p class="title"> Prontuário:</p>
-                            <input id="gu" name="prontuario" type="text" placeholder="GU0000000" required
+                            <input id="gu" name="prontuario" type="text" placeholder="GU0000000" 
+                            {{isset($servidores->prontuario) ? 'disabled' : '' }} required
                                 value="{{ isset($servidores->prontuario)  ? $servidores->prontuario  : '' }}"
                                 class="form-control {{ $errors->has('prontuario') ? 'is-invalid' : '' }}">
                                 @if($errors->has('prontuario'))
@@ -45,17 +47,6 @@
                                         {{ $errors->first('prontuario') }}
                                     </div>
                                 @endif
-                            <div class="form-group has-feedback">
-                            <p class="title">Senha:</p>
-                            <input id="password" name="password" type="password" placeholder="Senha" required
-                                value="{{ isset($servidores->password)  ? $servidores->password  : '' }}"
-                                class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}">
-                                @if($errors->has('password'))
-                                    <div class="invalid-feedback">
-                                        {{ $errors->first('password') }}
-                                    </div>
-                                @endif
-                            </div>
                         </div>
                         <button type="submit" class="btn btn-block btn-primary mt-lg btn-lg">Cadastrar</button>
                     </form>

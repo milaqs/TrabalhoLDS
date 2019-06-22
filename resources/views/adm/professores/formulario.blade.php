@@ -13,6 +13,7 @@
                 <form method="POST" action="{{ $caminho }}">
                     @csrf
                     <input type="hidden" name="tipo" value="professor"/>
+
                     <div class="form-group has-feedback">
                         <p class="title"> Nome do professor:</p>
                         <input id="nome" name="nome" autofocus type="text" placeholder="Nome" required
@@ -24,9 +25,11 @@
                             </div>
                         @endif
                     </div>
+
                     <div class="form-group has-feedback">
                         <p class="title"> Prontuário:</p>
-                        <input id="gu" name="prontuario" type="text" placeholder="GU0000000" required
+                        <input id="gu" name="prontuario" type="text" placeholder="GU0000000" 
+                        {{isset($professores->prontuario) ? 'disabled' : '' }} required
                             value="{{ isset($professores->prontuario)  ? $professores->prontuario  : '' }}"
                             class="form-control {{ $errors->has('prontuario') ? 'is-invalid' : '' }}">
                             @if($errors->has('prontuario'))
@@ -35,9 +38,11 @@
                                 </div>
                             @endif
                     </div>
+
                     <div class="form-group has-feedback">
                         <p class="title"> E-mail acadêmico:</p>
-                        <input id="email" name="email" type="email" placeholder="usuario@ifsp.edu.br" required
+                        <input id="email" name="email" type="email" placeholder="usuario@ifsp.edu.br" 
+                        {{isset($professores->email) ? 'disabled' : '' }} required
                             value="{{ isset($professores->email)  ? $professores->email  : '' }}"
                             class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}">
                             @if($errors->has('email'))
@@ -45,18 +50,6 @@
                                     {{ $errors->first('email') }}
                                 </div>
                             @endif
-                    <div class="form-group has-feedback">
-                    <p class="title">Senha:</p>
-                    <input id="password" name="password" type="password" placeholder="password" required
-                        value="{{ isset($professores->password)  ? $professores->password  : '' }}"
-                        class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}">
-                        @if($errors->has('password'))
-                            <div class="invalid-feedback">
-                                {{ $errors->first('password') }}
-                            </div>
-                        @endif
-                    </div>
-
                     </div>
                     <button type="submit" class="btn btn-block btn-primary mt-lg btn-lg">Cadastrar</button>
                 </form>

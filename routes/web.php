@@ -9,18 +9,21 @@ Route::get('/index', 'HomeController@index')->name('home');
 
 //Verficação
 Route::group(['middleware' => ['auth']], function () {
-    
+
+
+Route::get('auth/logout', ['as' => 'logout', 'uses' => 'HomeController@logout']);
+
 //Parte ADM
-Route::get('/adm/index',  ['as' => 'adm.index', 'uses' => 'AdmController@index'])->middleware('checkRoleAdmin');
+Route::get('/adm/index',  ['as' => 'adm.index', 'uses' => 'AdmController@index']);
 
 //Espacos
 Route::get('/adm/espacos/formularioAdicionar',          ['as' => 'adm.formAddEspaco', 'uses'    => 'AdmEspacoController@addForm'])->middleware('checkRoleServidor');
-Route::get('/adm/espacos/formularioAtualizar/{id}',     ['as' => 'adm.formAttEspaco', 'uses'    => 'AdmEspacoController@updateForm'])->middleware('checkRoleAdmin');
-Route::get('/adm/espacos/formulario',                   ['as' => 'adm.formEspaco', 'uses'       => 'AdmEspacoController@form'])->middleware('checkRoleAdmin');
-Route::post('/adm/espacos/adicionar',                   ['as' => 'adm.adicionaEspaco', 'uses'   => 'AdmEspacoController@insert'])->middleware('checkRoleAdmin');
-Route::post('/adm/espacos/atualizar/{id}',              ['as' => 'adm.atualizaEspaco', 'uses'   => 'AdmEspacoController@update'])->middleware('checkRoleAdmin');
-Route::get('/adm/espacos/listar',                       ['as' => 'adm.listaEspaco', 'uses'      => 'AdmEspacoController@selectAll'])->middleware('checkRoleAdmin');
-Route::get('/adm/espacos/deletar/{id}',                 ['as' => 'adm.deletaEspaco', 'uses'     => 'AdmEspacoController@delete'])->middleware('checkRoleAdmin');
+Route::get('/adm/espacos/formularioAtualizar/{id}',     ['as' => 'adm.formAttEspaco', 'uses'    => 'AdmEspacoController@updateForm'])->middleware('checkRoleServidor');
+Route::get('/adm/espacos/formulario',                   ['as' => 'adm.formEspaco', 'uses'       => 'AdmEspacoController@form'])->middleware('checkRoleServidor');
+Route::post('/adm/espacos/adicionar',                   ['as' => 'adm.adicionaEspaco', 'uses'   => 'AdmEspacoController@insert'])->middleware('checkRoleServidor');
+Route::post('/adm/espacos/atualizar/{id}',              ['as' => 'adm.atualizaEspaco', 'uses'   => 'AdmEspacoController@update'])->middleware('checkRoleServidor');
+Route::get('/adm/espacos/listar',                       ['as' => 'adm.listaEspaco', 'uses'      => 'AdmEspacoController@selectAll'])->middleware('checkRoleServidor');
+Route::get('/adm/espacos/deletar/{id}',                 ['as' => 'adm.deletaEspaco', 'uses'     => 'AdmEspacoController@delete'])->middleware('checkRoleServidor');
 
 //Professores
 Route::get('/adm/professores/formularioAdicionar',      ['as' => 'adm.formAddProfessor', 'uses'     => 'AdmProfessorController@addForm'])->middleware('checkRoleAdmin');
@@ -29,7 +32,7 @@ Route::post('/adm/professores/adicionar',               ['as' => 'adm.adicionaPr
 Route::post('/adm/professores/atualizar/{id}',          ['as' => 'adm.atualizaProfessor', 'uses'    => 'AdmProfessorController@update'])->middleware('checkRoleAdmin');
 Route::get('/adm/professores/listar',                   ['as' => 'adm.listaProfessor', 'uses'       => 'AdmProfessorController@selectAll'])->middleware('checkRoleAdmin');
 Route::get('/adm/professores/deletar/{id}',             ['as' => 'adm.deletaProfessor', 'uses'      => 'AdmProfessorController@delete'])->middleware('checkRoleAdmin');
-Route::get('/adm/professores/index',                    ['as' => 'adm.indexProfessor', 'uses'       => 'AdmProfessorController@index'])->middleware('checkRoleProfessor');
+
 
 //Servidores
 Route::get('/adm/servidores/formularioAdicionar',       ['as' => 'adm.formAddServidor', 'uses'             => 'AdmServidorController@addForm'])->middleware('checkRoleAdmin');
@@ -38,7 +41,7 @@ Route::post('/adm/servidores/adicionar',                ['as' => 'adm.adicionaSe
 Route::post('/adm/servidores/atualizar/{id}',           ['as' => 'adm.atualizaServidor', 'uses'            => 'AdmServidorController@update'])->middleware('checkRoleAdmin');
 Route::get('/adm/servidores/listar',                    ['as' => 'adm.listaServidor', 'uses'               => 'AdmServidorController@selectAll'])->middleware('checkRoleAdmin');
 Route::get('/adm/servidores/deletar/{id}',              ['as' => 'adm.deletaServidor', 'uses'              => 'AdmServidorController@delete'])->middleware('checkRoleAdmin');
-Route::get('/adm/servidores/index',                     ['as' => 'adm.indexServidor', 'uses'               => 'AdmServidorController@index'])->middleware('checkRoleServidor');
+
 
 //Disciplina
 Route::get('/adm/disciplinas/formularioAdicionar',      ['as' => 'adm.formAddDisciplina', 'uses'    => 'AdmDisciplinaController@addForm'])->middleware('checkRoleAdmin');
@@ -55,6 +58,14 @@ Route::get('/adm/servidores/aprovarSolicitacoes/{id}/{op}', ['as' => 'adm.aprova
 Route::get('/adm/professores/listarMinhasSolicitacoes',     ['as' => 'adm.listarMinhasSolicitacoes', 'uses'     => 'AdmSolicitacaoController@listarMinhasSolicitacoes'])->middleware('checkRoleProfessor');
 Route::get('/adm/professores/solicitaEspaco',               ['as' => 'adm.solicitaEspaco', 'uses'               => 'AdmSolicitacaoController@solicitaEspaco'])->middleware('checkRoleProfessor');
 Route::post('/adm/professores/registraSolicitacao',         ['as' => 'adm.registraSolicitacao', 'uses'          => 'AdmSolicitacaoController@registraSolicitacao'])->middleware('checkRoleProfessor');
+
+//Cursos
+Route::get('/adm/cursos/formularioAdicionar',      ['as' => 'adm.formAddCurso', 'uses'    => 'AdmCursoController@addForm'])->middleware('checkRoleAdmin');
+Route::get('/adm/cursos/formularioAtualizar/{id}', ['as' => 'adm.formAttCurso', 'uses'    => 'AdmCursoController@updateForm'])->middleware('checkRoleAdmin');
+Route::post('/adm/cursos/adicionar',               ['as' => 'adm.adicionaCurso', 'uses'   => 'AdmCursoController@insert'])->middleware('checkRoleAdmin');
+Route::post('/adm/cursos/atualizar/{id}',          ['as' => 'adm.atualizaCurso', 'uses'   => 'AdmCursoController@update'])->middleware('checkRoleAdmin');
+Route::get('/adm/cursos/listar',                   ['as' => 'adm.listaCurso', 'uses'      => 'AdmCursoController@selectAll'])->middleware('checkRoleAdmin');
+Route::get('/adm/cursos/deletar/{id}',             ['as' => 'adm.deletaCurso', 'uses'     => 'AdmCursoController@delete'])->middleware('checkRoleAdmin');
 
 
 });

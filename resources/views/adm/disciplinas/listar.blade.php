@@ -3,6 +3,7 @@
 @section('titulo', 'Lista disciplinas')
 
 @section('conteudo')
+
 <link href="{{asset('css/app.css')}}" rel="stylesheet" />
 <link href="{{asset('css/lista.css')}}" rel="stylesheet" />
 </head>
@@ -27,18 +28,20 @@
                             <th scope="col">Nome</th>
                             <th scope="col">Curso pertencente</th>
                             <th scope="col">Carga Horária</th>
+                            <th scope="col">Semestre</th>
                             <th scope="col">Editar</th>
                             <th scope="col">Deletar</th>
                         </tr>
                     </thead>
-                    @foreach($registros as $registro)
+                    @foreach($registros as $disciplina)
                     <tr scope="row">
-                        <td>{{ $registro->id }}</td>
-                        <td>{{ $registro->nome_disciplina }}</td>
-                        <td>{{ $registro->nome_curso }}</td>
-                        <td>{{ $registro->carga_horaria}} </td>
-                        <td><a class="btn btn-warning" href="{{route('adm.formAttDisciplina', $registro->id)}}">Editar</a></td>
-                        <td><a class="btn btn-danger" href="{{route('adm.deletaDisciplina', $registro->id)}}">Deletar</a></td>
+                        <td>{{ $disciplina->id }}</td>
+                        <td>{{ $disciplina->nome_disciplina }}</td>
+                        <td>{{ $disciplina->nome_curso }}</td>
+                        <td>{{ $disciplina->carga_horaria}} </td>
+                        <td>{{ $disciplina->semestre }}º </td>
+                        <td><a class="btn btn-warning" href="{{route('adm.formAttDisciplina', $disciplina->id)}}">Editar</a></td>
+                        <td><a class="btn btn-danger" onClick="return confirm('Quer mesmo deletar esse registro?')" href="{{route('adm.deletaDisciplina', $disciplina->id)}}">Deletar</a></td>
                     </tr>
                     @endforeach
                 </table>

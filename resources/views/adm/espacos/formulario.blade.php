@@ -45,6 +45,15 @@
                                     </div>
                                 @endif 
                             </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="1" name="acessibilidade"
+                                {{($espacos->acessibilidade) ? 'checked' : ''}}>
+                                <label class="form-check-label" for="acessibilidade">
+                                    Acessibilidade a cadeirantes
+                                </label>
+                            </div>
+
                             <button type="submit" class="btn btn-block btn-primary mt-lg btn-lg">Cadastrar</button>
                         </form>
                     </div>

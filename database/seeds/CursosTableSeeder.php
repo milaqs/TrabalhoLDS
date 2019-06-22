@@ -15,42 +15,42 @@ class CursosTableSeeder extends Seeder
                 [
                     'nome_curso' => 'Engenharia de Controle e Automação',
                     'descricao_curso' => Str::random(20),
-                    'nivel_curso' => 'bacharelado',
+                    'nivel_curso' => 'Bacharelado',
                 ],
                 [
                     'nome_curso' => 'Licenciatura em Matemática',
                     'descricao_curso' => Str::random(20),
-                    'nivel_curso' => 'licenciatura',
+                    'nivel_curso' => 'Licenciatura',
                 ],
                 [
                     'nome_curso' => 'Pós-Graduação em Gestão de Sistemas de Informação',
                     'descricao_curso' => Str::random(20),
-                    'nivel_curso' => 'posGraduacao',
+                    'nivel_curso' => 'Pós-Graduacao',
                 ],
                 [
                     'nome_curso' => 'Técnico em Automação Industrial',
                     'descricao_curso' => Str::random(20),
-                    'nivel_curso' => 'tecnico',
+                    'nivel_curso' => 'Técnico',
                 ],
                 [
                     'nome_curso' => 'Técnico em Informática para Internet',
                     'descricao_curso' => Str::random(20),
-                    'nivel_curso' => 'tecnico',
+                    'nivel_curso' => 'Técnico',
                 ],
                 [
                     'nome_curso' => 'Técnico em Manutenção e Suporte em Informática',
                     'descricao_curso' => Str::random(20),
-                    'nivel_curso' => 'tecnico',
+                    'nivel_curso' => 'Técnico',
                 ],
                 [
                     'nome_curso' => 'Tecnologia em Análise e Desenvolvimento de Sistemas',
                     'descricao_curso' => Str::random(20),
-                    'nivel_curso' => 'tecnologo',
+                    'nivel_curso' => 'Tecnólogo',
                 ],
                 [
                     'nome_curso' => 'Tecnologia em Automação Industrial',
                     'descricao_curso' => Str::random(20),
-                    'nivel_curso' => 'tecnologo',
+                    'nivel_curso' => 'Tecnólogo',
                 ],
 
             ]);

@@ -1,6 +1,6 @@
 @extends('layout.site')
 
-@section('titulo', 'Lista Servidores')
+@section('titulo', 'Lista Cursos')
 
 @section('conteudo')
 
@@ -12,10 +12,10 @@
             <div class="tabela">
                 <div class="row">
                     <div class="col-md-10">
-                        <h3 class="text-center">Lista de Servidores</h3>
+                        <h3 class="text-center">Listagem de Cursos</h3>
                     </div>
                     <div class="col-md-2 pull-right">
-                        <form method="get" action="{{route('adm.formAddServidor')}}">
+                        <form method="get" action="{{route('adm.formAddCurso')}}">
                             <button type="submit" class="btn btn-light-blue btn-new">Inserir Novo</button>
                         </form>
                     </div>
@@ -25,21 +25,19 @@
                     <thead>
                         <tr>
                             <th scope="col">Id</th>
-                            <th scope="col">Prontuário</th>
                             <th scope="col">Nome</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Editar</th>
-                            <th scope="col">Deletar</th>
+                            <th scope="col">Descrição</th>
+                            <th scope="col">Nível</th>
                         </tr>
                     </thead>
-                    @foreach($registros as $registro)
+                    @foreach($registros as $curso)
                     <tr scope="row">
-                        <td>{{ $registro->id }}</td>
-                        <td>{{ $registro->prontuario }}</td>
-                        <td>{{ $registro->nome }}</td>
-                        <td>{{ $registro->email }}</td>
-                        <td><a class="btn btn-warning" href="{{route('adm.formAttServidor', $registro->id)}}">Editar</a></td>
-                        <td><a class="btn btn-danger" onClick="return confirm('Quer mesmo deletar esse registro?')" href="{{route('adm.deletaServidor', $registro->id)}}">Deletar</a></td>
+                        <td>{{ $curso->id }}</td>
+                        <td>{{ $curso->nome_curso }}</td>
+                        <td>{{ $curso->descricao_curso }}</td>
+                        <td>{{ $curso->nivel_curso}} </td>
+                        <td><a class="btn btn-warning" href="{{route('adm.formAttCurso', $curso->id)}}">Editar</a></td>
+                        <td><a class="btn btn-danger" onClick="return confirm('Quer mesmo deletar esse registro?')" href="{{route('adm.deletaCurso', $curso->id)}}">Deletar</a></td>
                     </tr>
                     @endforeach
                 </table>

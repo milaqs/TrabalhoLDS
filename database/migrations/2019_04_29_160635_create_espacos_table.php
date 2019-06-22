@@ -18,6 +18,7 @@ class CreateEspacosTable extends Migration
             $table->string('nome_espaco');
             $table->integer('capacidade_espaco');
             $table->string('descricao_espaco');
+            $table->boolean('acessibilidade')->default(0);
             $table->timestamps();
         });
     }

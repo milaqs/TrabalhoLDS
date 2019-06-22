@@ -17,7 +17,7 @@ class CreateCursosTable extends Migration
             $table->bigIncrements('id');
             $table->string('nome_curso', 100);
             $table->string('descricao_curso', 200);
-            $table->enum('nivel_curso', ['tecnico', 'ensino_medio', 'tecnologo', 'bacharelado', 'licenciatura', 'posGraduacao']);
+            $table->enum('nivel_curso', ['Técnico', 'Ensino médio', 'Tecnólogo', 'Bacharelado', 'Licenciatura', 'Pós-Graduacao']);
             $table->timestamps();
         });
     }

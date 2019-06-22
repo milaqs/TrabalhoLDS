@@ -3,7 +3,6 @@
 @section('titulo', 'Lista Servidores')
 
 @section('conteudo')
-
 <link href="{{asset('css/app.css')}}" rel="stylesheet" />
 <link href="{{asset('css/lista.css')}}" rel="stylesheet" />
 </head>

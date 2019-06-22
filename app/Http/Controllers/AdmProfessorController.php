@@ -9,33 +9,10 @@ use Illuminate\Support\Facades\Hash;
 
 class AdmProfessorController extends Controller
 {
-    
+    private $validacao;
 
-    public function validations(Request $req) {
-        $rules = [
-            "nome" => "required|min:3|max:200",
-            "email" => "required|email|unique:users",
-            "prontuario" => "required|min:3|max:30",
-            "password" => "required|min:3|max:100",
-        ];
-
-        $messages = [
-            "required" => "Este campo é obrigatório",
-            "email.email" => "Email inválido",
-            "email.unique" => "Email em uso",
-            "nome.min" => "Minimo de caracteres é 3",
-            "nome.max" => "Maxmo de caracteres é 200",
-            "prontuario.min" => "Minimo de caracteres é 3",
-            "prontuario.min" => "Maximo de caracteres permitidos é 30",
-            "password.min" => "Minimo de caracteres é 3",
-            "password.min" => "Maximo de caracteres permitidos é 100"
-        ];
-
-        $req->validate($rules, $messages);
-    }
-
-    public function index() {
-        return view ('adm.professores.index');
+    function __construct() {
+        $this->validacao = new Validacao();
     }
 
     public function addForm()
@@ -52,7 +29,7 @@ class AdmProfessorController extends Controller
     }
 
     public function insert(Request $req) {
-        $this->validations($req);
+        $this->validacao->validaInsereUsuario($req);
         $dados = $req->all();
         $this->createUser($dados);
         return redirect()->route('adm.listaProfessor');
@@ -64,26 +41,17 @@ class AdmProfessorController extends Controller
             'email' => $data['email'],
             'prontuario' => $data['prontuario'],
             'tipo' => $data['tipo'],
-            'password' => Hash::make($data['password']),
+            'password' => Hash::make('password', 
+            ['rounds' => 12]),
         ]);
     }
 
-    public function update(Request $req, $id)
-    {   
-        $this->validations($req);
+    public function update(Request $req, $id) {   
+        $this->validacao->validaAtualizaUsuario($req);
         $dados = $req->all();
         User::find($id)->update($dados);
         return redirect()->route('adm.listaProfessor');
     }
-
-    // private function isHashed($string) {
-    //     $hash = Hash::make($string);
-    //     if (Hash::check($string, $hash)) {
-    //         return true;
-    //     }
-    //     return false;
-    // }
-
 
     public function selectAll()
     {

@@ -7,13 +7,18 @@ use Auth;
 
 class HomeController extends Controller
 {
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function index()
-    {
+    public function index() {
+        if (Auth::check()) {
+            return redirect()->route('adm.index');
+        }
         return view('home');
     }
+    
+    public function logout() {
+        if(Auth::check()){
+            Auth::logout();
+            return redirect('home');
+        }
+        return back()->withInput();
+    }   
 }

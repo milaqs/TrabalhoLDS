@@ -1,4 +1,5 @@
 @include('layout._includes.header')
+@include('menu')
 
 @yield('conteudo')
 

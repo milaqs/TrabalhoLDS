@@ -9,23 +9,6 @@
     }
 </style>
     <link href="{{asset('css/usuario.css')}}" rel="stylesheet" />
-    <div class="navbar">
-            <div class="col-md-2">
-                <div class="logo">
-                    <a href="{{route('home')}}">
-                        <img src="{{asset('img/ifsp.png')}}" alt="Logo IFSP" title="logo Ifsp">
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-1 pull-right">
-                <a href="{{route('login')}}" class="user-button">
-                    Login
-                </a>
-            </div>
-        </div>
-    </div>
-    <div class="navbar-separator">
-    </div>
     <div>
         <div class="panel-calendar">
             <div class="calendar-content">
