@@ -24,7 +24,7 @@
                             <th scope="col">Disciplina</th>
                             <th scope="col">Professor</th>
                             <th scope="col">Semestre</th>
-                            <th scope="col">Data</th>
+                            <th scope="col">Dia da Semana</th>
                             <th scope="col">Horario inicio</th>
                             <th scope="col">Horario final</th>
                             <th scope="col">Status</th>
@@ -38,7 +38,7 @@
                         <td>{{ $registro->id_disciplina }}</td>
                         <td>{{ $registro->id_professor }}</td>
                         <td>{{ $registro->semestre }}</td>
-                        <td>{{ $registro->data }}</td>
+                        <td>{{ $semanas[$registro->dia_semana] }}</td>
                         <td>{{ $registro->horario_inicio}}</td>
                         <td>{{ $registro->horario_final }}</td>
                         @if ($registro->status != 'aguardando')

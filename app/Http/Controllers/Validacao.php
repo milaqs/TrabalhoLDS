@@ -92,8 +92,6 @@ class Validacao extends Controller {
         ];
     }
 
-
-
     private function mensagens() {
         $this->mensagens = [
             "required" => "Este campo é obrigatório",

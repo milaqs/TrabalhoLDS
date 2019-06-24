@@ -39,7 +39,7 @@
                         <td>{{ $registro->id_disciplina }}</td>
                         <td>{{ $registro->id_professor }}</td>
                         <td>{{ $registro->semestre }}</td>
-                        <td>{{ $registro->data }}</td>
+                        <td>{{ $semanas[$registro->dia_semana] }}</td>
                         <td>{{ $registro->horario_inicio}}</td>
                         <td>{{ $registro->horario_final }}</td>
                         <td><a class="btn btn-warning" onClick="return confirm('Quer mesmo aprovar essa solicitação?')" href="aprovarSolicitacoes/{{$registro->id}}/aprovado">Aprovar</a></td>
