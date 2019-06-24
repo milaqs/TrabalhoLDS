@@ -49,12 +49,24 @@
                     
                     <div class="form-group has-feedback">
                         <p class="title"> Semestre:</p>
-                        <input id="semestre" name="semestre" type="text" required>
+                        <select name="semestre">
+                        @for($i = 1; $i <= 12; $i++)
+                            <option value="{{$i}}"> {{$i}} Semestre</option>
+                        @endfor
+                        </select>
                     </div>
 
                     <div class="form-group has-feedback">
-                        <p class="title"> Data:</p>
-                        <input id="data" name="data" type="date" required>
+                        <p class="title">Dia da semana</p>
+                        <select name="dia_semana">
+                            <option disable>Selecione o dia da semana</option>
+                            <option value="1">Segunda</option>
+                            <option value="2">Terça</option>
+                            <option value="3">Quarta</option>
+                            <option value="4">Quinta</option>
+                            <option value="5">Sexta</option>
+                            <option value="6">Sábado</option>
+                        </select>
                     </div>
 
                     <div class="form-group has-feedback">

@@ -20,7 +20,7 @@ class CreateSolicitacaosTable extends Migration
             $table->integer('id_disciplina');
             $table->integer('id_professor');
             $table->string('semestre', 50);
-            $table->date('data');
+            $table->integer('dia_semana');
             $table->time('horario_inicio');
             $table->time('horario_final');
             $table->enum('status', ['aprovado', 'reprovado', 'aguardando'])->default('aguardando');

@@ -13,41 +13,52 @@
         <div class="panel-calendar">
             <div class="calendar-content">
                 <div class="calendar-options">
+                    <form method="post" action="{{ route('filtrar') }}" class="form-inline">
+                        @csrf
                     <div class="row">
-                        <div class="col-md-4 option">
-                            <span>Curso:</span>
-                            <select class="custom-select">
-                                <option selected></option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
+                            <div class="col-md-3 option">
+                                <span>Curso:</span>
+                                <select class="custom-select" name="id_curso">
+                                    <option disable></option>
+                                        @foreach($cursos as $curso)
+                                        <tr scope="row">
+                                            <option value="{{$curso->id}}" >{{$curso->nome_curso}}</option>
+                                        @endforeach
+                                        </tr>
+                                </select>
+                            </div>
+                            <div class="col-md-5 option">
+                                    <span>Disciplina:</span>
+                                <select class="custom-select" name="id_disciplina">
+                                        <option disable></option>
+                                        @foreach($disciplinas as $disciplina)
+                                        <tr scope="row">
+                                            <option value="{{$disciplina->id}}" >{{$disciplina->nome_disciplina}}</option>
+                                        @endforeach
+                                        </tr>
+                                </select>
+                            </div>
+                            <div class="col-md-3 option">
+                                    <span>Sala:</span>
+                                <select class="custom-select" name="id_espaco">
+                                        <option disable></option>
+                                        @foreach($espacos as $espaco)
+                                        <tr scope="row">
+                                            <option value="{{$espaco->id}}" >{{$espaco->nome_espaco}}</option>
+                                        @endforeach
+                                        </tr>
+                                </select>
+                            </div>
+                            <div class="col-md-1 option">
+                                    <input type="submit" value="Filtrar"/>
+                            </div>
                         </div>
-                        <div class="col-md-4 option">
-                                <span>Módulo:</span>
-                            <select class="custom-select">
-                                <option selected></option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
-                        </div>
-                        <div class="col-md-4 option">
-                                <span>Período:</span>
-                            <select class="custom-select">
-                                <option selected></option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
-                        </div>
-                    </div>
+                    </form>
                 </div>
                 <table class="table-calendar">
                     <thead>
                         <tr>
                             <th scope='col'>Horários</th>
-                            <th scope='col'>Domingo</th>
                             <th scope='col'>Segunda</th>
                             <th scope='col'>Terça</th>
                             <th scope='col'>Quarta</th>
@@ -57,56 +68,31 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>14:30h às 15h</td>
-                            <td>Giovani LDS<br>G 45</td>
-                            <td>Marcia LPO<br>G 45</td>
-                            <td>Marcia LPO<br>G 45</td>
-                            <td>Giovani LDS<br>G 45</td>
-                            <td>Giovani LDS<br>G 45</td>
-                            <td>Giovani LDS<br>G 45</td>
-                            <td>Giovani LDS<br>G 45</td>
-                        </tr>
-                        <tr>
-                            <td> - </td>
-                            <td> - </td>
-                            <td> - </td>
-                            <td> - </td>
-                            <td> - </td>
-                            <td> - </td>
-                            <td> - </td>
-                            <td> - </td>
-                        </tr>
-                        <tr>
-                            <td> - </td>
-                            <td> - </td>
-                            <td> - </td>
-                            <td> - </td>
-                            <td> - </td>
-                            <td> - </td>
-                            <td> - </td>
-                            <td> - </td>
-                        </tr>
-                        <tr>
-                            <td> - </td>
-                            <td> - </td>
-                            <td> - </td>
-                            <td> - </td>
-                            <td> - </td>
-                            <td> - </td>
-                            <td> - </td>
-                            <td> - </td>
-                        </tr>
-                        <tr>
-                            <td> - </td>
-                            <td> - </td>
-                            <td> - </td>
-                            <td> - </td>
-                            <td> - </td>
-                            <td> - </td>
-                            <td> - </td>
-                            <td> - </td>
-                        </tr>
+                        @if (isset($horarios))
+                            @foreach($horarios as $one)
+                            <tr>
+                                <td>{{ isset($one['hora']) ?  $one['hora'] : '-' }}</td>
+                                <td>
+                                    {{ isset($one['segunda']) ?  $one['segunda'] : '-' }}
+                                </td>
+                                <td>
+                                    {{ isset($one['terca']) ?  $one['terca'] : '-' }}
+                                </td>
+                                <td>
+                                    {{ isset($one['quarta']) ?  $one['quarta'] : '-' }}
+                                </td>
+                                <td>
+                                    {{ isset($one['quinta']) ?  $one['quinta'] : '-' }}
+                                </td>
+                                <td>
+                                    {{ isset($one['sexta']) ?  $one['sexta'] : '-' }}
+                                </td>
+                                <td>
+                                    {{ isset($one['sabado']) ?  $one['sabado'] : '-' }}
+                                </td>
+                            </tr>
+                            @endforeach
+                        @endif
                     </tbody>
                 </table>
             </div>

@@ -12,16 +12,18 @@ use Auth;
 
 class AdmSolicitacaoController extends Controller {
 
-    public function historicoSolitacoes() {
+    public function historicoSolitacoes() { 
         $registros = Solicitacao::all()->sortBy('status');
         $this->formataValoresLista($registros);
-        return view('adm.servidores.historicoSolicitacoes', compact('registros'));
+        $semanas = $this->nomeSemana();
+        return view('adm.servidores.historicoSolicitacoes', compact('registros', "semanas"));
     }
 
     public function listarSolicitacoes() {
         $registros = Solicitacao::all()->where('status', 'aguardando');
         $this->formataValoresLista($registros);
-        return view('adm.servidores.listarSolicitacoes', compact('registros'));
+        $semanas = $this->nomeSemana();
+        return view('adm.servidores.listarSolicitacoes', compact('registros', 'semanas'));
     }
 
     public function aprovarSolicitacoes($id, $op) {
@@ -33,7 +35,8 @@ class AdmSolicitacaoController extends Controller {
     public function listarMinhasSolicitacoes() {
         $registros = Solicitacao::all()->where('id_professor', Auth::id());
         $this->formataValoresLista($registros);
-        return view ('adm.professores.listarMinhasSolicitacoes', compact('registros'));
+        $semanas = $this->nomeSemana();
+        return view ('adm.professores.listarMinhasSolicitacoes', compact('registros', 'semanas'));
     }
 
     public function solicitaEspaco() {
@@ -46,6 +49,7 @@ class AdmSolicitacaoController extends Controller {
 
     public function registraSolicitacao(Request $req) {
         $dados = $req->all();
+
         Solicitacao::create($dados);
         return redirect()->route('adm.listarMinhasSolicitacoes');
     }
@@ -83,5 +87,17 @@ class AdmSolicitacaoController extends Controller {
             $professor = User::find($registro->id_professor);
             $registro->id_professor = $professor->nome;
         }
+    }
+
+    private function nomeSemana()
+    {
+        return $semanas = [
+            1 => 'Segunda',
+            2 => 'Terça',
+            3 => 'Quarta',
+            4 => 'Quinta',
+            5 => 'Sexta',
+            6 => 'Sábado'
+        ];
     }
 }

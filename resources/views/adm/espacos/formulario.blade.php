@@ -48,7 +48,7 @@
 
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="1" name="acessibilidade"
-                                {{($espacos->acessibilidade) ? 'checked' : ''}}>
+                                {{isset($espacos->acessibilidade) ? 'checked' : ''}}>
                                 <label class="form-check-label" for="acessibilidade">
                                     Acessibilidade a cadeirantes
                                 </label>
